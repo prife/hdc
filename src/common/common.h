@@ -49,8 +49,8 @@ using std::vector;
 #ifdef HDC_HOST
 
 #ifdef HARMONY_PROJECT
-#include <libusb/libusb.h>
-#else  // NOT HARMONY_PROJECT
+// #include <libusb/libusb.h>
+// #else  // NOT HARMONY_PROJECT
 #include <libusb-1.0/libusb.h>
 #endif // END HARMONY_PROJECT
 

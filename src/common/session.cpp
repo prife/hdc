@@ -1083,7 +1083,7 @@ bool HdcSessionBase::WorkThreadStartSession(HSession hSession)
         handshake.sessionId = hSession->sessionId;
         handshake.connectKey = hSession->connectKey;
         if (!hSession->isCheck) {
-            handshake.version = Base::GetVersion() + HDC_MSG_HASH;
+            handshake.version = Base::GetVersion() + "HDC_MSG_HASH";
             WRITE_LOG(LOG_INFO, "set version = %s", handshake.version.c_str());
         }
         handshake.authType = AUTH_NONE;
