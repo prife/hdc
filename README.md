@@ -8,6 +8,11 @@
     - [Getting instructions on pc<a name="section129654513263"></a>](#getting-instructions-on-pc)
   - [More help and docs<a name="section129654513264"></a>](#more-help-and-docs)
 
+
+## build
+
+[点我阅读如何编译二进制](./build.md)
+
 ## Introduction<a name="section662115419449"></a>
 
 HDC (OpenHarmony Device Connector) is a command-line tool for developers to connect and debug the device. The PC-side development machine uses the command-line tool hdc (for convenience, collectively referred to as hdc below). This tool needs to support deployment on Windows/Linux /Mac and other systems to connect and debug communication with OpenHarmony devices (or simulators). The PC-side hdc tool needs to release corresponding versions for the above development machine operating system platforms, and the device-side hdc daemon needs to follow the device image release including support for the simulator. The following will introduce the commonly used commands and usage examples of hdc.
