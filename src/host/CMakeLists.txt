@@ -12,7 +12,7 @@ get_filename_component(MY_RESULT_ABSOLUTE_PATH_VAR
 
 include_directories(/opt/homebrew/include/)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/../common)
-include_directories(/Users/wetest/workplace/openharmoney/third_party_bounds_checking_function/include)
+include_directories(/Users/prife/workplace/openharmoney/third_party_bounds_checking_function/include)
 include_directories(${ohos_top}/third_party/libusb/include)
 
 FIND_LIBRARY(IOKit_LIBRARY IOKit)
@@ -22,7 +22,7 @@ FIND_LIBRARY(Security_LIBRARY Security)
 link_libraries(uv crypto lz4
     /opt/homebrew/lib/libusb-1.0.a
     /opt/homebrew/lib/libuv.a
-    /Users/wetest/workplace/openharmoney/third_party_bounds_checking_function/obj/libsecurec.a
+    /Users/prife/workplace/openharmoney/third_party_bounds_checking_function/obj/libsecurec.a
     ${Foundation_LIBRARY} ${IOKit_LIBRARY} ${Security_LIBRARY}
     )
 
