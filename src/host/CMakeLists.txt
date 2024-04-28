@@ -10,9 +10,15 @@ get_filename_component(MY_RESULT_ABSOLUTE_PATH_VAR
 
 # message(FATAL_ERROR "${}")
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+add_compile_options(-g)
+
+# 确保 third_party_bounds_checking_function 与该git仓库同级别路径
+set(third_party_srcpath ${CMAKE_CURRENT_LIST_DIR}/../../../)
+
 include_directories(/opt/homebrew/include/)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/../common)
-include_directories(/Users/prife/workplace/openharmoney/third_party_bounds_checking_function/include)
+include_directories(${third_party_srcpath}/third_party_bounds_checking_function/include)
 include_directories(${ohos_top}/third_party/libusb/include)
 
 FIND_LIBRARY(IOKit_LIBRARY IOKit)
@@ -22,7 +28,7 @@ FIND_LIBRARY(Security_LIBRARY Security)
 link_libraries(uv crypto lz4
     /opt/homebrew/lib/libusb-1.0.a
     /opt/homebrew/lib/libuv.a
-    /Users/prife/workplace/openharmoney/third_party_bounds_checking_function/obj/libsecurec.a
+    ${third_party_srcpath}/third_party_bounds_checking_function/obj/libsecurec.a
     ${Foundation_LIBRARY} ${IOKit_LIBRARY} ${Security_LIBRARY}
     )
 
