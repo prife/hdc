@@ -1,6 +1,8 @@
 
 ## 简要描述如何在在mac上编译hdc
 
+>仅验证了m1 mac
+
 方便调试harmoneyOS的hdc协议，可以源码编译hdc的client/server组件。
 
 hdc代码仓库有C++和rust两套实现，通过与华为工程师沟通，目前现状如下：
@@ -15,19 +17,24 @@ hdc代码仓库有C++和rust两套实现，通过与华为工程师沟通，目�
 brew install libuv libusb
 ```
 
-安装harmoney自研的带安全检查的基础库
+下载代码，并安装harmoney自研的带安全检查的基础库
+
 ```
+mkdir openharmoney && cd openharmoney 
+git clone git@github.com:prife/hdc.git
 git clone git@gitee.com:openharmony/third_party_bounds_checking_function
-git checkout OpenHarmony-4.1-Release
+cd third_party_bounds_checking_function  && git checkout OpenHarmony-4.1-Release && cd ../
 ```
 
-修改并编译
+编译
 ```
 cd  hdc/src/host
 mkdir build && cd build
 cmake ../
 make -j
 ```
+
+也可以使用vscode/clion等IDE编译并调试
 
 ## 编译rust版本
 
