@@ -26,6 +26,8 @@ FIND_LIBRARY(IOKit_LIBRARY IOKit)
 FIND_LIBRARY(Foundation_LIBRARY Foundation)
 FIND_LIBRARY(Security_LIBRARY Security)
 
+link_directories(/opt/homebrew/lib)
+
 link_libraries(uv crypto lz4
     /opt/homebrew/lib/libusb-1.0.a
     /opt/homebrew/lib/libuv.a
