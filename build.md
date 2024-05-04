@@ -28,7 +28,7 @@ cd third_party_bounds_checking_function  && git checkout OpenHarmony-4.1-Release
 
 编译
 ```
-cd  hdc/src/host
+cd  hdc/src/
 mkdir build && cd build
 cmake ../
 make -j
