@@ -16,7 +16,9 @@ extern "C" {
 
 static const char EMPTY_STR[] = { "" };
 
-inline int GetParameter(const char *key, const char *def, char *value, uint32_t len) {}
+int SetParameter(const char *key, const char *value);
+int GetParameter(const char *key, const char *def, char *value, uint32_t len);
+int WaitParameter(const char *key, const char *value, int timeout);
 
 #ifdef __cplusplus
 #if __cplusplus

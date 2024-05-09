@@ -1,5 +1,6 @@
 #include <cstdarg>
 #include <cstdio>
+#include <cstdint>
 
 namespace OHOS::HiviewDFX {
 bool IsDebugOn()
@@ -57,6 +58,21 @@ int HiLogPrint(LogType type, LogLevel level, unsigned int domain, const char *ta
     ret = HiLogPrintArgs(type, level, domain, tag, fmt, ap);
     va_end(ap);
     return ret;
+}
+
+int GetParameter(const char *key, const char *def, char *value, uint32_t len)
+{
+    return -1;
+}
+
+int SetParameter(const char *key, const char *value)
+{
+    return -1;
+}
+
+int WaitParameter(const char *key, const char *value, int timeout)
+{
+    return -1;
 }
 
 }
