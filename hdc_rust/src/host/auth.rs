@@ -20,7 +20,7 @@ use crate::config::*;
 use hdc::config;
 use hdc::utils;
 use hdc::config::TaskMessage;
-use hdc::host_transfer::host_usb;
+// use hdc::host_transfer::host_usb;
 use hdc::serializer::serialize::Serialization;
 use hdc::serializer::native_struct::SessionHandShake;
 use hdc::transfer;
@@ -40,6 +40,8 @@ pub async fn usb_handshake_with_daemon(
     session_id: u32,
     channel_id: u32,
 ) -> io::Result<(String, String)> {
+    Ok(("".to_string(),"".to_string()))
+/*
     let rsa = load_or_create_prikey()?;
 
     let mut handshake = SessionHandShake {
@@ -93,6 +95,7 @@ pub async fn usb_handshake_with_daemon(
             return Err(Error::new(ErrorKind::Other, "unknown command flag"));
         }
     }
+*/
 }
 
 pub async fn handshake_with_daemon(

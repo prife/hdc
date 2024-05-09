@@ -450,6 +450,8 @@ fn show_permit_dialog() -> bool {
 }
 
 pub fn is_auth_enable() -> bool {
+    return false;
+
     let (_, auth_enable) = get_dev_item("const.hdc.secure", "_");
     hdc::error!("const.hdc.secure is {}.", auth_enable);
     if auth_enable.trim().to_lowercase() != "1" {

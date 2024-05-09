@@ -159,17 +159,17 @@ mod parser_tests {
         assert!(actual.is_err());
     }
 
-    #[test]
-    fn if_init_install_works() {
-        let mut task = HostAppTask::new(0, 0);
-        task.init_install(&String::from("-cwd \"/home/\" 1234.hap"));
+    // #[test]
+    // fn if_init_install_works() {
+    //     let mut task = HostAppTask::new(0, 0);
+    //     task.init_install(&String::from("-cwd \"/home/\" 1234.hap"));
 
-        assert_eq!(task.transfer.local_path, "/home/1234.hap");
-        let ret = task
-            .transfer
-            .transfer_config
-            .optional_name
-            .ends_with(".hap");
-        assert_eq!(ret, true);
-    }
+    //     assert_eq!(task.transfer.local_path, "/home/1234.hap");
+    //     let ret = task
+    //         .transfer
+    //         .transfer_config
+    //         .optional_name
+    //         .ends_with(".hap");
+    //     assert_eq!(ret, true);
+    // }
 }

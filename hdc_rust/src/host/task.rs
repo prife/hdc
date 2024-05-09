@@ -22,7 +22,7 @@ use crate::host_app::HostAppTaskMap;
 use hdc::common::hdcfile::{self, FileTaskMap, HdcFile};
 use hdc::config::{HdcCommand, ConnectType};
 use hdc::transfer;
-use hdc::host_transfer::host_usb;
+// use hdc::host_transfer::host_usb;
 use hdc::utils;
 
 use std::collections::HashMap;
@@ -319,6 +319,8 @@ async fn channel_connect_task(task_info: TaskInfo) -> io::Result<()> {
 }
 
 pub async fn usb_handle_deamon(ptr: u64, session_id: u32, connect_key: String) -> io::Result<()> {
+    return Ok(());
+/* 
     let mut rx = host_usb::start_recv(ptr, connect_key.clone(), session_id);
     loop {
         match rx.recv().await {
@@ -340,9 +342,11 @@ pub async fn usb_handle_deamon(ptr: u64, session_id: u32, connect_key: String) -
             }
         };
     }
+*/
 }
 
 pub async fn start_usb_device_loop(ptr: u64, connect_key: String) {
+/*
     let session_id = utils::get_pseudo_random_u32();
     let channel_id = utils::get_pseudo_random_u32();
     let wr = host_usb::HostUsbWriter {
@@ -372,6 +376,7 @@ pub async fn start_usb_device_loop(ptr: u64, connect_key: String) {
         }
     };
     ylong_runtime::spawn(usb_handle_deamon(ptr, session_id, connect_key));
+*/
 }
 
 async fn start_tcp_daemon_session(connect_key: String, task_info: &TaskInfo) -> io::Result<()> {

@@ -91,7 +91,7 @@ pub mod hdc_log {
     macro_rules! trace {
         ($($arg:tt)+) => {
             let head = format!("{}:{}", file!().split('/').last().unwrap(), line!());
-            hilog_rust::info!(LOG_LABEL, "{} {}", @public(head), @public(format!($($arg)+)));
+            // hilog_rust::info!(LOG_LABEL, "{} {}", @public(head), @public(format!($($arg)+)));
             log::trace!($($arg)+);
         };
     }
@@ -109,7 +109,7 @@ pub mod hdc_log {
     macro_rules! debug {
         ($($arg:tt)+) => {
             let head = format!("{}:{}", file!().split('/').last().unwrap(), line!());
-            hilog_rust::info!(LOG_LABEL, "{} {}", @public(head), @public(format!($($arg)+)));
+            // hilog_rust::info!(LOG_LABEL, "{} {}", @public(head), @public(format!($($arg)+)));
             log::debug!($($arg)+);
         };
     }
@@ -126,8 +126,8 @@ pub mod hdc_log {
     #[macro_export]
     macro_rules! info {
         ($($arg:tt)+) => {
-            let head = format!("{}:{}", file!().split('/').last().unwrap(), line!());
-            hilog_rust::info!(LOG_LABEL, "{} {}", @public(head), @public(format!($($arg)+)));
+            // let head = format!("{}:{}", file!().split('/').last().unwrap(), line!());
+            // hilog_rust::info!(LOG_LABEL, "{} {}", @public(head), @public(format!($($arg)+)));
             log::info!($($arg)+);
         };
     }
@@ -145,7 +145,7 @@ pub mod hdc_log {
     macro_rules! warn {
         ($($arg:tt)+) => {
             let head = format!("{}:{}", file!().split('/').last().unwrap(), line!());
-            hilog_rust::warn!(LOG_LABEL, "{} {}", @public(head), @public(format!($($arg)+)));
+            // log::warn!(LOG_LABEL, "{} {}", @public(head), @public(format!($($arg)+)));
             log::warn!($($arg)+);
         };
     }
@@ -163,7 +163,7 @@ pub mod hdc_log {
     macro_rules! error {
         ($($arg:tt)+) => {
             let head = format!("{}:{}", file!().split('/').last().unwrap(), line!());
-            hilog_rust::error!(LOG_LABEL, "{} {}", @public(head), @public(format!($($arg)+)));
+            // log::error!(LOG_LABEL, "{} {}", @public(head), @public(format!($($arg)+)));
             log::error!($($arg)+);
         };
     }
@@ -181,7 +181,7 @@ pub mod hdc_log {
     macro_rules! fatal {
         ($($arg:tt)+) => {
             let head = format!("{}:{}", file!().split('/').last().unwrap(), line!());
-            hilog_rust::fatal!(LOG_LABEL, "{} {}", @public(head), @public(format!($($arg)+)));
+            log::fatal!(LOG_LABEL, "{} {}", @public(head), @public(format!($($arg)+)));
             log::fatal!($($arg)+);
         };
     }

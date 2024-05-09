@@ -25,7 +25,7 @@ use std::str::FromStr;
 use std::time::Duration;
 #[allow(unused)]
 use hdc::utils::hdc_log::*;
-use hdc::host_transfer::host_usb;
+// use hdc::host_transfer::host_usb;
 use std::io::{self, Error, ErrorKind};
 
 #[cfg(feature = "host")]
@@ -38,6 +38,7 @@ pub async fn run_server_mode(addr_str: String) -> io::Result<()> {
 }
 
 async fn start_usb_server() {
+/*
     let ptr = host_usb::init_host_usb() as u64;
     loop {
         let device_list = host_usb::get_ready_usb_devices_string(ptr);
@@ -61,6 +62,7 @@ async fn start_usb_server() {
         }
     }
     host_usb::stop(ptr);
+*/
 }
 
 async fn start_client_listen(addr_str: String) -> io::Result<()> {
