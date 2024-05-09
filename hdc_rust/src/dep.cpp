@@ -75,4 +75,9 @@ int WaitParameter(const char *key, const char *value, int timeout)
     return -1;
 }
 
+int32_t CloseUsbFdEx(int32_t fd)
+{
+    return -1;
+}
+
 }
