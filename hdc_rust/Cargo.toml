@@ -9,6 +9,10 @@ edition = "2021"
 name = "hdcd"
 path = "src/daemon/main.rs"
 
+[[bin]]
+name = "hdc"
+path = "src/host/main.rs"
+
 [build-dependencies]
 cc = "1.0"
 
@@ -17,6 +21,7 @@ libc = "0.2.154"
 log = "0.4"
 lz4 = "1.24.0"
 openssl = "0.10.64"
+lazy_static = "1.4.0"
 humantime = "2.1.0"
 env_logger = "0.11.3"
 hilog_rust = { git = "https://gitee.com/openharmony/hiviewdfx_hilog.git"}
