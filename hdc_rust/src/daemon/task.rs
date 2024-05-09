@@ -17,7 +17,7 @@
 
 use crate::{auth, daemon_unity};
 
-use super::shell::{PtyMap, PtyTask};
+// use super::shell::{PtyMap, PtyTask};
 
 use super::daemon_app::{self, AppTaskMap, DaemonAppTask};
 use crate::utils::hdc_log::*;
@@ -44,6 +44,7 @@ pub fn get_parameter(key: String, out: &mut [u8]) -> i32 {
 }
 
 async fn daemon_shell_task(task_message: TaskMessage, session_id: u32) -> io::Result<()> {
+/*
     match task_message.command {
         HdcCommand::ShellInit => {
             let pty_task = PtyTask::new(
@@ -97,6 +98,7 @@ async fn daemon_shell_task(task_message: TaskMessage, session_id: u32) -> io::Re
             }
         }
     }
+*/
     Ok(())
 }
 
@@ -104,10 +106,10 @@ async fn remove_task(session_id: u32, channel_id: u32) {
     AppTaskMap::remove(session_id, channel_id).await;
     FileTaskMap::remove(session_id, channel_id).await;
     // shell & hilog task
-    if let Some(pty_task) = PtyMap::get(channel_id).await {
-        let _ = &pty_task.tx.send(vec![0x04_u8]).await;
-        PtyMap::del(channel_id).await;
-    }
+    // if let Some(pty_task) = PtyMap::get(channel_id).await {
+    //     let _ = &pty_task.tx.send(vec![0x04_u8]).await;
+    //     PtyMap::del(channel_id).await;
+    // }
 }
 
 async fn daemon_channel_close(task_message: TaskMessage, session_id: u32) -> io::Result<()> {
@@ -235,6 +237,7 @@ async fn daemon_file_task(task_message: TaskMessage, session_id: u32) -> io::Res
 }
 
 async fn daemon_hilog_task(task_message: TaskMessage, session_id: u32) -> io::Result<()> {
+/*
     let cmd = if task_message.payload.len() == 1 && task_message.payload[0] == 104 {
         // payload is 'h'
         "hilog -h"
@@ -250,10 +253,12 @@ async fn daemon_hilog_task(task_message: TaskMessage, session_id: u32) -> io::Re
         HdcCommand::KernelEchoRaw,
     );
     PtyMap::put(task_message.channel_id, pty_task).await;
+*/
     Ok(())
 }
 
 async fn daemon_bug_report_task(task_message: TaskMessage, session_id: u32) -> io::Result<()> {
+/*
     let pty_task = PtyTask::new(
         session_id,
         task_message.channel_id,
@@ -261,6 +266,7 @@ async fn daemon_bug_report_task(task_message: TaskMessage, session_id: u32) -> i
         HdcCommand::UnityBugreportData,
     );
     PtyMap::put(task_message.channel_id, pty_task).await;
+*/
     Ok(())
 }
 

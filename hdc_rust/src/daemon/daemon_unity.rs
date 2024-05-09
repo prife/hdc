@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 use super::mount;
-use super::shell::PtyMap;
+// use super::shell::PtyMap;
 use crate::jdwp::Jdwp;
 use hdc::common::hdctransfer;
 use hdc::config::{self, HdcCommand, MessageLevel};
@@ -85,7 +85,7 @@ async fn set_root_run_enable(session_id: u32, channel_id: u32, root: bool) {
         result
     );
     if result {
-        PtyMap::clear(session_id).await;
+        // PtyMap::clear(session_id).await;
         std::process::exit(0);
     }
 }
@@ -161,7 +161,7 @@ async fn set_device_mode(session_id: u32, channel_id: u32, _payload: &[u8]) {
             let result = set_dev_item(config::ENV_HDC_MODE, config::MODE_USB);
             echo_device_mode_result(session_id, channel_id, result, config::MODE_USB).await;
             if result {
-                PtyMap::clear(session_id).await;
+                // PtyMap::clear(session_id).await;
                 hdc_restart().await
             }
         }
@@ -178,7 +178,7 @@ async fn set_device_mode(session_id: u32, channel_id: u32, _payload: &[u8]) {
             let result = set_dev_item(config::ENV_HOST_PORT, port);
             echo_device_mode_result(session_id, channel_id, result, config::ENV_HOST_PORT).await;
             if result {
-                PtyMap::clear(session_id).await;
+                // PtyMap::clear(session_id).await;
                 hdc_restart().await
             }
         }

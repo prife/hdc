@@ -14,13 +14,13 @@
  */
 //! daemon
 
-extern crate panic_handler;
+// extern crate panic_handler;
 mod auth;
 mod daemon_app;
 mod daemon_unity;
 use crate::jdwp::Jdwp;
 mod mount;
-mod shell;
+// mod shell;
 mod task;
 mod task_manager;
 // mod sendmsg;
@@ -36,11 +36,11 @@ use hdc::common::jdwp;
 use hdc::config;
 use hdc::config::TaskMessage;
 use hdc::transfer;
-use hdc::transfer::uart::UartReader;
+// use hdc::transfer::uart::UartReader;
 use hdc::transfer::base::Reader;
-use hdc::transfer::uart_wrapper;
+// use hdc::transfer::uart_wrapper;
 use hdc::utils;
-use crate::shell::PtyMap;
+// use crate::shell::PtyMap;
 
 use log::LevelFilter;
 use std::ffi::CString;
@@ -72,7 +72,7 @@ async fn handle_message(res: io::Result<TaskMessage>, session_id: u32) -> io::Re
             hdc::debug!("clear pty map: {}", session_id);
             if e.kind() == ErrorKind::Other {
                 hdc::warn!("unpack task failed: {}", e.to_string());
-                PtyMap::clear(session_id).await;
+                // PtyMap::clear(session_id).await;
                 return Err(e);
             }
         }
@@ -125,6 +125,7 @@ async fn tcp_daemon_start(port: u16) -> io::Result<()> {
     }
 }
 
+/*
 async fn uart_daemon_start() -> io::Result<()> {
     loop {
         let fd = transfer::uart::uart_init()?;
@@ -244,6 +245,7 @@ async fn uart_handle_client(fd: i32) -> io::Result<()> {
             }
         }
     }
+*/
 
 async fn usb_daemon_start() -> io::Result<()> {
     loop {
@@ -330,7 +332,7 @@ async fn usb_handle_client(_config_fd: i32, bulkin_fd: i32, bulkout_fd: i32) -> 
             }
             Err(e) => {
                 hdc::warn!("unpack task failed: {}", e.to_string());
-                PtyMap::clear(real_session_id).await;
+                // PtyMap::clear(real_session_id).await;
                 break;
             }
         }
@@ -371,6 +373,8 @@ fn get_logger_lv() -> LevelFilter {
 }
 
 fn get_tcp_port() -> u16 {
+    config::DAEMON_PORT
+/*
     let (ret, host_port) = get_dev_item(config::ENV_HOST_PORT, "_");
     if !ret || host_port == "_" {
         hdc::info!("get host port failed, will use default port {}.", config::DAEMON_PORT);
@@ -396,11 +400,12 @@ fn get_tcp_port() -> u16 {
 
     hdc::info!("convert host port failed, will use default port {}.", config::DAEMON_PORT);
     config::DAEMON_PORT
+*/
 }
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
-    panic_handler::init();
+    // panic_handler::init();
     if args.len() == 2 && args[1] == "-v" {
         println!("{}", config::get_version());
         return;
@@ -422,11 +427,13 @@ fn main() {
                 println!("[Fail]tcp daemon failed: {}", e);
             }
         });
+
         let usb_task = ylong_runtime::spawn(async {
             if let Err(e) = usb_daemon_start().await {
                 println!("[Fail]usb daemon failed: {}", e);
             }
         });
+/*
         let uart_task = ylong_runtime::spawn(async {
             if let Err(e) = uart_daemon_start().await {
                 println!("[Fail]uart daemon failed: {}", e);
@@ -440,5 +447,8 @@ fn main() {
         let _ = usb_task.await;
         let _ = uart_task.await;
         let _ = jdwp_server_task.await;
+*/
+        let _ = tcp_task.await;
+        let _ = usb_task.await;
     });
 }
