@@ -14,6 +14,7 @@
  */
 #ifndef HDC_USBFFS2_H
 #define HDC_USBFFS2_H
+#ifdef __LINUX__
 // clang-format off
 #include <linux/usb/functionfs.h>
 // clang-format on
@@ -242,4 +243,6 @@ struct UsbFunctionfsDescV2 {
 } __attribute__((packed));
 
 }  // namespace Hdc
+#endif __LINUX__
 #endif
+

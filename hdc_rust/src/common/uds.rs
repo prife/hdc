@@ -20,12 +20,12 @@ use std::mem;
 
 use libc::bind;
 use libc::c_void;
-use libc::{accept4, close, connect};
+use libc::{accept, close, connect};
 use libc::{c_char, listen, poll, recv, socket, MSG_NOSIGNAL};
 use libc::{c_int, sa_family_t, sockaddr, sockaddr_un, socklen_t, AF_UNIX};
 use libc::{fcntl, pipe, read, send, socketpair, write, MSG_EOR};
-use libc::{POLLERR, POLLHUP, POLLNVAL, POLLRDHUP};
-use libc::{SOCK_CLOEXEC, SOCK_STREAM};
+use libc::{POLLERR, POLLHUP, POLLNVAL, /*POLLRDHUP*/};
+use libc::{/*SOCK_CLOEXEC, */SOCK_STREAM};
 
 const LISTEN_BACKLOG: c_int = 10;
 const MAX_CLIENT_FD_COUNT: usize = 256;
@@ -44,7 +44,7 @@ impl PollNode {
     pub fn new(fd: i32, ppid: u32, pkg_name: String, debug_or_release: bool) -> Self {
         Self {
             fd,
-            events: POLLNVAL | POLLRDHUP | POLLHUP | POLLERR,
+            events: POLLNVAL /*| POLLRDHUP*/ | POLLHUP | POLLERR,
             revents: 0,
             ppid,
             pkg_name,
@@ -112,7 +112,7 @@ pub struct UdsServer {}
 
 impl UdsServer {
     pub fn wrap_socket(socket_type: c_int) -> i32 {
-        let flags = socket_type | SOCK_CLOEXEC;
+        let flags = socket_type /*| SOCK_CLOEXEC*/;
         unsafe { socket(AF_UNIX, flags, 0) }
     }
 
@@ -143,7 +143,8 @@ impl UdsServer {
         addr.len = capacity;
         unsafe {
             let (addr_ptr, len_ptr) = addr.as_raw_mut_general();
-            accept4(socket_fd, addr_ptr, len_ptr, SOCK_CLOEXEC)
+            // accept4(socket_fd, addr_ptr, len_ptr, SOCK_CLOEXEC)
+            accept(socket_fd, addr_ptr, len_ptr)
         }
     }
 
@@ -205,7 +206,7 @@ impl UdsServer {
 
     #[allow(unused)]
     pub fn wrap_socketpair(socket_type: c_int) -> Result<(i32, i32)> {
-        let flags = socket_type | SOCK_CLOEXEC;
+        let flags = socket_type/* | SOCK_CLOEXEC*/;
         let mut fd_buf = [-1; 2];
         unsafe {
             socketpair(AF_UNIX, flags, 0, fd_buf[..].as_mut_ptr());
@@ -233,7 +234,7 @@ pub struct UdsClient {}
 
 impl UdsClient {
     pub fn wrap_socket(af: i32) -> i32 {
-        let flags = SOCK_STREAM | SOCK_CLOEXEC;
+        let flags = SOCK_STREAM/*| SOCK_CLOEXEC*/;
         unsafe { socket(af, flags, 0) }
     }
 

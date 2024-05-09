@@ -16,9 +16,9 @@
 #![allow(missing_docs)]
 
 use super::base::{self, Writer};
-use super::uart::UartWriter;
+// use super::uart::UartWriter;
 use super::usb::{self, UsbReader, UsbWriter};
-use super::{tcp, uart_wrapper};
+use super::{tcp/*, uart_wrapper*/};
 #[cfg(feature = "host")]
 use crate::host_transfer::host_usb::HostUsbMap;
 
@@ -227,6 +227,7 @@ impl UsbMap {
     }
 }
 
+/*
 type UartWriter_ = Arc<Mutex<UartWriter>>;
 type UartMap_ = Arc<RwLock<HashMap<u32, UartWriter_>>>;
 
@@ -263,6 +264,7 @@ impl UartMap {
         ConnectTypeMap::put(session_id, ConnectType::Uart).await;
     }
 }
+*/
 
 pub async fn put(session_id: u32, data: TaskMessage) {
     match ConnectTypeMap::get(session_id).await {
@@ -275,7 +277,7 @@ pub async fn put(session_id: u32, data: TaskMessage) {
             }
         }
         ConnectType::Uart => {
-            uart_wrapper::wrap_put(session_id, data, 0, 0).await;
+            // uart_wrapper::wrap_put(session_id, data, 0, 0).await;
         }
         ConnectType::Bt => {}
         ConnectType::HostUsb(_mount_point) => {

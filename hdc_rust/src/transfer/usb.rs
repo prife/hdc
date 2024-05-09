@@ -65,6 +65,7 @@ extern "C" {
 #[cfg(not(target_os = "windows"))]
 pub fn usb_init() -> io::Result<(i32, i32, i32)> {
     crate::info!("opening usb fd...");
+/*
     let path = CString::new(config::USB_FFS_BASE).unwrap();
 
     let base_path = unsafe {
@@ -100,6 +101,8 @@ pub fn usb_init() -> io::Result<(i32, i32, i32)> {
     crate::info!("usb fd: {config_fd}, {bulkin_fd}, {bulkout_fd}");
 
     Ok((config_fd, bulkin_fd, bulkout_fd))
+*/
+    Ok((0,0,0))
 }
 
 #[cfg(not(target_os = "windows"))]
@@ -121,7 +124,7 @@ pub struct UsbWriter {
 
 impl base::Reader for UsbReader {
     // 屏蔽window编译报错
-    #[cfg(not(target_os = "windows"))]
+    #[cfg(target_os = "linux")]
     fn read_frame(&self, _expected_size: usize) -> io::Result<Vec<u8>> {
         let buf = unsafe { ReadUsbDevEx(self.fd) };
         if buf.size == 0 {
@@ -138,6 +141,10 @@ impl base::Reader for UsbReader {
         Err(utils::error_other("usb read error".to_string()))
     }
 
+    #[cfg(target_os = "macos")]
+    fn read_frame(&self, _expected_size: usize) -> io::Result<Vec<u8>> {
+        Err(utils::error_other("usb read error".to_string()))
+    }
 
     fn check_protocol_head(&mut self) -> io::Result<(u32, u32)> {
         let buf = self.read_frame(serializer::USB_HEAD_SIZE)?;
@@ -159,7 +166,7 @@ impl base::Reader for UsbReader {
 
 impl base::Writer for UsbWriter {
     // 屏蔽window编译报错
-    #[cfg(not(target_os = "windows"))]
+    #[cfg(target_os = "linux")]
     fn write_all(&self, data: Vec<u8>) -> io::Result<i32> {
         let buf = SerializedBuffer {
             ptr: data.as_ptr() as *const libc::c_char,
@@ -175,6 +182,10 @@ impl base::Writer for UsbWriter {
 
     // 屏蔽window编译报错
     #[cfg(target_os = "windows")]
+    fn write_all(&self, _data: Vec<u8>) -> io::Result<i32> {
+        Ok(0)
+    }
+    #[cfg(target_os = "macos")]
     fn write_all(&self, _data: Vec<u8>) -> io::Result<i32> {
         Ok(0)
     }
