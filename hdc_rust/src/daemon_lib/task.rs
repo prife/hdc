@@ -17,7 +17,7 @@
 
 use crate::daemon_lib::{auth, daemon_unity};
 
-use crate::daemon_lib::shell::*;
+// use crate::daemon_lib::shell::*;
 
 use crate::daemon_lib::daemon_app::{self, AppTaskMap, DaemonAppTask};
 use crate::daemon_lib::sys_para::*;
@@ -31,6 +31,7 @@ use crate::transfer;
 use std::io::{self, Error, ErrorKind};
 
 async fn daemon_shell_task(task_message: TaskMessage, session_id: u32) -> io::Result<()> {
+/*
     match task_message.command {
         HdcCommand::ShellInit => {
             let pty_task = PtyTask::new(
@@ -84,6 +85,7 @@ async fn daemon_shell_task(task_message: TaskMessage, session_id: u32) -> io::Re
             }
         }
     }
+*/
     Ok(())
 }
 
@@ -223,6 +225,7 @@ async fn daemon_file_task(task_message: TaskMessage, session_id: u32) -> io::Res
 }
 
 async fn daemon_hilog_task(task_message: TaskMessage, session_id: u32) -> io::Result<()> {
+/*
     let cmd = if task_message.payload.len() == 1 && task_message.payload[0] == 104 {
         // payload is 'h'
         "hilog -h"
@@ -238,10 +241,12 @@ async fn daemon_hilog_task(task_message: TaskMessage, session_id: u32) -> io::Re
         HdcCommand::KernelEchoRaw,
     );
     PtyMap::put(session_id, task_message.channel_id, pty_task).await;
+*/
     Ok(())
 }
 
 async fn daemon_bug_report_task(task_message: TaskMessage, session_id: u32) -> io::Result<()> {
+/*
     let pty_task = PtyTask::new(
         session_id,
         task_message.channel_id,
@@ -249,6 +254,7 @@ async fn daemon_bug_report_task(task_message: TaskMessage, session_id: u32) -> i
         HdcCommand::UnityBugreportData,
     );
     PtyMap::put(session_id, task_message.channel_id, pty_task).await;
+*/
     Ok(())
 }
 

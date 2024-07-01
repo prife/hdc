@@ -14,7 +14,7 @@
  */
 //! daemon
 
-extern crate panic_handler;
+// extern crate panic_handler;
 use hdc::common::jdwp::Jdwp;
 use hdc::common::base::Base;
 use hdc::config;

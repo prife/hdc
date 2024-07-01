@@ -16,7 +16,7 @@
 
 #[allow(unused_imports)]
 use crate::daemon_lib::daemon_app;
-use crate::daemon_lib::shell;
+// use crate::daemon_lib::shell;
 use crate::daemon_lib::auth;
 #[allow(unused_imports)]
 use crate::common::forward;
@@ -65,7 +65,7 @@ pub async fn free_session(session_id: u32) {
 
 pub async fn stop_task(session_id: u32) {
     hdcfile::stop_task(session_id).await;
-    shell::stop_task(session_id).await;
+    // shell::stop_task(session_id).await;
     daemon_app::stop_task(session_id).await;
     forward::stop_task(session_id).await;
 }
@@ -74,7 +74,7 @@ pub async fn dump_running_task_info() -> String {
     let mut result = "\n".to_string();
     result.push_str(&format!("{:#}", buffer::dump_session().await));
     result.push_str(&format!("{:#}", hdcfile::dump_task().await));
-    result.push_str(&format!("{:#}", shell::dump_task().await));
+    // result.push_str(&format!("{:#}", shell::dump_task().await));
     result.push_str(&format!("{:#}", daemon_app::dump_task().await));
     result.push_str(&format!("{:#}", forward::dump_task().await));
     result.push_str("# ");
