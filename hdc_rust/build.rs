@@ -72,9 +72,15 @@ fn build_hdcd() {
         // println!("cargo:rerun-if-changed={}", file2);
     }
 
+
+    // 获取项目根目录
+    let project_root = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap());
+    // 构造头文件相对路径
+    let header_path = project_root.join("bounds_checking_function/include");
     // 添加头文件搜索路径
-    build.include("/Users/wetest/workplace/openharmoney/developtools_hdc_master/hdc_rust/bounds_checking_function/include")
-    .include("/opt/homebrew/include/");
+    build.include(header_path)
+            .include(project_root.join("src/cffi"))
+            .include("/opt/homebrew/include/");
     // 指定使用C++17编译
     build.flag_if_supported("-std=c++17");
 
