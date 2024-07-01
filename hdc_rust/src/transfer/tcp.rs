@@ -23,7 +23,7 @@ use crate::utils::hdc_log::*;
 use std::io::{self, Error, ErrorKind};
 
 #[cfg(feature = "host")]
-extern crate ylong_runtime_static as ylong_runtime;
+// extern crate ylong_runtime_static as ylong_runtime;
 use ylong_runtime::io::AsyncReadExt;
 use ylong_runtime::net::SplitReadHalf;
 

@@ -30,7 +30,7 @@ use std::path::PathBuf;
 use std::sync::Arc;
 use ylong_runtime::sync::Mutex;
 #[cfg(feature = "host")]
-extern crate ylong_runtime_static as ylong_runtime;
+// extern crate ylong_runtime_static as ylong_runtime;
 use hdc::tar::compress::Compress;
 
 pub struct HostAppTask {

@@ -33,7 +33,7 @@ use std::io::{self, Error, ErrorKind};
 use std::sync::Arc;
 
 #[cfg(feature = "host")]
-extern crate ylong_runtime_static as ylong_runtime;
+// extern crate ylong_runtime_static as ylong_runtime;
 use ylong_runtime::net::SplitReadHalf;
 use ylong_runtime::net::TcpStream;
 use ylong_runtime::sync::{Mutex, RwLock, mpsc};

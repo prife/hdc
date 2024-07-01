@@ -15,7 +15,7 @@
 //! forward
 #![allow(missing_docs)]
 #[cfg(feature = "host")]
-extern crate ylong_runtime_static as ylong_runtime;
+// extern crate ylong_runtime_static as ylong_runtime;
 
 #[cfg(not(feature = "host"))]
 use libc::SOCK_STREAM;

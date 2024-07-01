@@ -38,7 +38,7 @@ use std::sync::Once;
 use std::mem::MaybeUninit;
 
 #[cfg(feature = "host")]
-extern crate ylong_runtime_static as ylong_runtime;
+// extern crate ylong_runtime_static as ylong_runtime;
 use ylong_runtime::io::AsyncWriteExt;
 use ylong_runtime::net::{SplitReadHalf, SplitWriteHalf};
 use ylong_runtime::sync::{mpsc, Mutex, RwLock};

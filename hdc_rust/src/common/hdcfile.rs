@@ -24,7 +24,7 @@ use std::path::Path;
 use std::sync::Arc;
 use std::io::{Error, ErrorKind};
 #[cfg(feature = "host")]
-extern crate ylong_runtime_static as ylong_runtime;
+// extern crate ylong_runtime_static as ylong_runtime;
 use ylong_runtime::sync::Mutex;
 
 use crate::common::filemanager::FileManager;

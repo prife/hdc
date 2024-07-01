@@ -36,7 +36,7 @@ use hdc::common::base::Base;
 use hdc::config;
 
 #[cfg(feature = "host")]
-extern crate ylong_runtime_static as ylong_runtime;
+// extern crate ylong_runtime_static as ylong_runtime;
 
 #[macro_use]
 extern crate lazy_static;

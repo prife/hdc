@@ -15,7 +15,7 @@
 //! host_usb
 #![allow(missing_docs)]
 #[cfg(feature = "host")]
-extern crate ylong_runtime_static as ylong_runtime;
+// extern crate ylong_runtime_static as ylong_runtime;
 use crate::config;
 use crate::config::*;
 use crate::serializer;

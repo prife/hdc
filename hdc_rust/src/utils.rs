@@ -23,7 +23,7 @@ use std::process::Command;
 use std::time::{SystemTime, UNIX_EPOCH};
 
 #[cfg(feature = "host")]
-extern crate ylong_runtime_static as ylong_runtime;
+// extern crate ylong_runtime_static as ylong_runtime;
 use ylong_runtime::io::AsyncWriteExt;
 
 pub fn get_pseudo_random_u32() -> u32 {

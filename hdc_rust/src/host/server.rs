@@ -33,7 +33,7 @@ use std::str::FromStr;
 use std::time::Duration;
 
 #[cfg(feature = "host")]
-extern crate ylong_runtime_static as ylong_runtime;
+// extern crate ylong_runtime_static as ylong_runtime;
 use ylong_runtime::net::{SplitReadHalf, SplitWriteHalf, TcpListener, TcpStream};
 
 #[cfg(target_os = "windows")]
