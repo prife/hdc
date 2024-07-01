@@ -80,4 +80,8 @@ int32_t CloseUsbFdEx(int32_t fd)
     return -1;
 }
 
+#include <libusb.h>
+int libusb_submit_transfer(struct libusb_transfer *tr) {
+    return -1;
+}
 }

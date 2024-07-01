@@ -201,7 +201,7 @@ fn main() {
     println!("cargo:rustc-link-lib=static={}", library_name);
     println!("cargo:rustc-link-search=native={}", library_dir);
 
-    build_hdcd();
+    // build_hdcd();
 
     build_hdc_host();
     println!("cargo:rerun-if-changed=build.rs");
