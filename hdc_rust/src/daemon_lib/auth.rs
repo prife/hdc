@@ -770,6 +770,7 @@ fn show_permit_dialog() -> bool {
 }
 
 pub fn is_auth_enable() -> bool {
+    return false;
     #[cfg(feature = "emulator")]
     return false;
 

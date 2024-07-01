@@ -22,8 +22,8 @@ use libc::c_void;
 use libc::{accept/*4*/, close, connect};
 use libc::{c_char, listen, poll, recv, socket, MSG_NOSIGNAL};
 use libc::{c_int, sa_family_t, sockaddr, sockaddr_un, socklen_t, AF_UNIX};
-use libc::{eventfd, fcntl, pipe, read, send, socketpair, write, MSG_EOR};
-use libc::{EFD_CLOEXEC, EFD_NONBLOCK, /*SOCK_CLOEXEC,*/ SOCK_STREAM};
+use libc::{/*eventfd,*/ fcntl, pipe, read, send, socketpair, write, MSG_EOR};
+use libc::{/*EFD_CLOEXEC, EFD_NONBLOCK, SOCK_CLOEXEC,*/ SOCK_STREAM};
 use libc::{POLLERR, POLLHUP, POLLNVAL, /*POLLRDHUP*/};
 use std::io::{self, ErrorKind, Result};
 use std::mem;
@@ -164,7 +164,8 @@ impl UdsServer {
     }
 
     pub fn wrap_event_fd() -> i32 {
-        unsafe { eventfd(0, EFD_CLOEXEC | EFD_NONBLOCK) }
+        0
+        /* unsafe { eventfd(0, EFD_CLOEXEC | EFD_NONBLOCK) } */
     }
 
     pub fn wrap_write_fd(fd: i32) {

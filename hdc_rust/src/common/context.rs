@@ -20,7 +20,7 @@ use crate::utils::hdc_log::*;
 use crate::common::forward;
 use crate::common::hdcfile::FileTaskMap;
 use crate::daemon_lib::daemon_app::AppTaskMap;
-use crate::daemon_lib::shell::{ ShellExecuteMap, PtyMap };
+// use crate::daemon_lib::shell::{ ShellExecuteMap, PtyMap };
 use crate::config::ContextType;
 use ylong_runtime::sync::Mutex;
 use std::sync::Arc;
@@ -77,6 +77,7 @@ impl ContextMap {
             ContextType::File => {
                 FileTaskMap::remove(session_id, channel_id).await;
             }
+/*
             ContextType::ExecuteShell => {
                 ShellExecuteMap::del(session_id, channel_id).await;
             }
@@ -88,6 +89,7 @@ impl ContextMap {
                     crate::error!("shell task is not exist");
                 }
             }
+*/
             ContextType::Forward => {
                 forward::free_channel_task(session_id, channel_id).await;
             }

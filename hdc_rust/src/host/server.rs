@@ -22,7 +22,7 @@ use std::ffi::CString;
 use crate::task::ConnectMap;
 use hdc::config;
 use hdc::config::HdcCommand;
-use hdc::host_transfer::host_usb;
+// use hdc::host_transfer::host_usb;
 use hdc::transfer;
 use hdc::utils;
 #[allow(unused)]
@@ -73,6 +73,7 @@ pub async fn run_server_mode(addr_str: String) -> io::Result<()> {
 }
 
 async fn start_usb_server() {
+/*
     let ptr = host_usb::init_host_usb() as u64;
     loop {
         let device_list = host_usb::get_ready_usb_devices_string(ptr);
@@ -97,6 +98,7 @@ async fn start_usb_server() {
         }
     }
     host_usb::stop(ptr);
+*/
 }
 
 async fn start_client_listen(addr_str: String) -> io::Result<()> {

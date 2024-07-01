@@ -61,7 +61,7 @@ fn get_logger_lv() -> LevelFilter {
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
-    panic_handler::init();
+    // panic_handler::init();
     if args.len() == 2 && args[1] == "-v" {
         println!("{}", config::get_version());
         return;
@@ -86,6 +86,7 @@ fn main() {
                 hdc::error!("[Fail]tcp daemon failed: {}", e);
             }
         });
+/*
         #[cfg(not(feature = "emulator"))]
         let usb_task = utils::spawn(async {
             if let Err(e) = usb_daemon_start().await {
@@ -98,6 +99,7 @@ fn main() {
                 hdc::error!("[Fail]uart daemon failed: {}", e);
             }
         });
+*/
         #[cfg(feature = "emulator")]
         hdc::info!("daemon main emulator, start bridge daemon.");
         #[cfg(feature = "emulator")]
@@ -112,10 +114,12 @@ fn main() {
         });
         #[cfg(not(feature = "emulator"))]
         let _ = tcp_task.await;
+/*
         #[cfg(not(feature = "emulator"))]
         let _ = usb_task.await;
         #[cfg(not(feature = "emulator"))]
         let _ = uart_task.await;
+*/
         #[cfg(feature = "emulator")]
         let _ = bridge_task.await;
         let _ = jdwp_server_task.await;

@@ -22,7 +22,7 @@ use hdc::common::forward::{self, ForwardTaskMap, HdcForward};
 /// use hdc::common::hdcfile::HdcFile;
 use hdc::common::hdcfile::{self, FileTaskMap, HdcFile};
 use hdc::config::{ConnectType, HdcCommand};
-use hdc::host_transfer::host_usb;
+// use hdc::host_transfer::host_usb;
 use hdc::transfer;
 use hdc::transfer::send_channel_data;
 use hdc::utils;
@@ -461,6 +461,7 @@ async fn channel_connect_task(task_info: TaskInfo) -> io::Result<()> {
 }
 
 pub async fn usb_handle_deamon(ptr: u64, mut rx: mpsc::BoundedReceiver<(TaskMessage, u32)>, session_id: u32, connect_key: String) -> io::Result<()> {
+/*
     loop {
         match rx.recv().await {
             Ok((task_message, _index)) => {
@@ -481,9 +482,12 @@ pub async fn usb_handle_deamon(ptr: u64, mut rx: mpsc::BoundedReceiver<(TaskMess
             }
         };
     }
+*/
+    return Ok(());
 }
 
 pub async fn start_usb_device_loop(ptr: u64, connect_key: String) {
+/*
     let session_id = utils::get_pseudo_random_u32();
     let wr = host_usb::HostUsbWriter {
         connect_key: connect_key.clone(),
@@ -495,6 +499,7 @@ pub async fn start_usb_device_loop(ptr: u64, connect_key: String) {
     hdc::info!("generate new session {} channel {}", session_id, channel_id);
     start_handshake_with_daemon(connect_key.clone(), session_id, channel_id, ConnectType::HostUsb(connect_key.clone())).await;
     let _ = ylong_runtime::spawn(usb_handle_deamon(ptr, rx, session_id, connect_key)).await;
+*/
 }
 
 async fn start_tcp_daemon_session(connect_key: String, task_info: &TaskInfo) -> io::Result<()> {

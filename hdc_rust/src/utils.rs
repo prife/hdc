@@ -109,7 +109,7 @@ pub mod hdc_log {
     #[macro_export]
     macro_rules! trace {
         ($($arg:tt)+) => {
-            hilog_rust::debug!(LOG_LABEL, "{}:{} {}", @public(get_file_name(file!())), @public(line!()),  @public(format!($($arg)+)));
+            // hilog_rust::debug!(LOG_LABEL, "{}:{} {}", @public(get_file_name(file!())), @public(line!()),  @public(format!($($arg)+)));
             log::trace!($($arg)+);
         };
     }
@@ -126,7 +126,7 @@ pub mod hdc_log {
     #[macro_export]
     macro_rules! debug {
         ($($arg:tt)+) => {
-            hilog_rust::debug!(LOG_LABEL, "{}:{} {}", @public(get_file_name(file!())), @public(line!()),  @public(format!($($arg)+)));
+            // hilog_rust::debug!(LOG_LABEL, "{}:{} {}", @public(get_file_name(file!())), @public(line!()),  @public(format!($($arg)+)));
             log::debug!($($arg)+);
         };
     }
@@ -143,7 +143,7 @@ pub mod hdc_log {
     #[macro_export]
     macro_rules! info {
         ($($arg:tt)+) => {
-            hilog_rust::info!(LOG_LABEL, "{}:{} {}", @public(get_file_name(file!())), @public(line!()),  @public(format!($($arg)+)));
+            // hilog_rust::info!(LOG_LABEL, "{}:{} {}", @public(get_file_name(file!())), @public(line!()),  @public(format!($($arg)+)));
             log::info!($($arg)+);
         };
     }
@@ -160,7 +160,7 @@ pub mod hdc_log {
     #[macro_export]
     macro_rules! warn {
         ($($arg:tt)+) => {
-            hilog_rust::warn!(LOG_LABEL, "{}:{} {}", @public(get_file_name(file!())), @public(line!()),  @public(format!($($arg)+)));
+            // hilog_rust::warn!(LOG_LABEL, "{}:{} {}", @public(get_file_name(file!())), @public(line!()),  @public(format!($($arg)+)));
             log::warn!($($arg)+);
         };
     }
@@ -177,7 +177,7 @@ pub mod hdc_log {
     #[macro_export]
     macro_rules! error {
         ($($arg:tt)+) => {
-            hilog_rust::error!(LOG_LABEL, "{}:{} {}", @public(get_file_name(file!())), @public(line!()),  @public(format!($($arg)+)));
+            // hilog_rust::error!(LOG_LABEL, "{}:{} {}", @public(get_file_name(file!())), @public(line!()),  @public(format!($($arg)+)));
             log::error!($($arg)+);
         };
     }
@@ -194,7 +194,7 @@ pub mod hdc_log {
     #[macro_export]
     macro_rules! fatal {
         ($($arg:tt)+) => {
-            hilog_rust::fatal!(LOG_LABEL, "{}:{} {}", @public(get_file_name(file!())), @public(line!()),  @public(format!($($arg)+)));
+            // hilog_rust::fatal!(LOG_LABEL, "{}:{} {}", @public(get_file_name(file!())), @public(line!()),  @public(format!($($arg)+)));
             log::fatal!($($arg)+);
         };
     }

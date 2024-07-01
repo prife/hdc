@@ -19,7 +19,7 @@ pub mod auth;
 pub mod daemon_app;
 pub mod daemon_unity;
 pub mod mount;
-pub mod shell;
+// pub mod shell;
 pub mod task;
 pub mod task_manager;
 pub mod sys_para;
@@ -40,10 +40,10 @@ use crate::daemon_lib::bridge;
 use crate::transfer;
 #[cfg(not(feature = "emulator"))]
 use crate::transfer::base::Reader;
-#[cfg(not(feature = "emulator"))]
-use crate::transfer::uart::UartReader;
-#[cfg(not(feature = "emulator"))]
-use crate::transfer::uart_wrapper;
+// #[cfg(not(feature = "emulator"))]
+// use crate::transfer::uart::UartReader;
+// #[cfg(not(feature = "emulator"))]
+// use crate::transfer::uart_wrapper;
 
 
 
@@ -220,6 +220,7 @@ pub async fn tcp_daemon_start(port: u16) -> io::Result<()> {
     }
 }
 
+/*
 #[cfg(not(feature = "emulator"))]
 pub async fn uart_daemon_start() -> io::Result<()> {
     loop {
@@ -354,6 +355,7 @@ pub async fn uart_handle_client(fd: i32) -> io::Result<()> {
         }
     }
 }
+*/
 
 #[cfg(not(feature = "emulator"))]
 pub async fn usb_daemon_start() -> io::Result<()> {

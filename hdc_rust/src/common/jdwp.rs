@@ -20,7 +20,7 @@ use crate::config::HdcCommand;
 use crate::config::TaskMessage;
 use crate::{transfer, utils};
 use crate::utils::hdc_log::*;
-use libc::{POLLERR, POLLHUP, POLLIN, POLLNVAL, /*POLLRDHUP*/, SOCK_STREAM};
+use libc::{POLLERR, POLLHUP, POLLIN, POLLNVAL, /*POLLRDHUP,*/ SOCK_STREAM};
 
 use std::collections::HashMap;
 use std::sync::Arc;
