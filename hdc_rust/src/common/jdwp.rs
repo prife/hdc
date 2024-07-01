@@ -20,7 +20,7 @@ use crate::config::HdcCommand;
 use crate::config::TaskMessage;
 use crate::{transfer, utils};
 use crate::utils::hdc_log::*;
-use libc::{POLLERR, POLLHUP, POLLIN, POLLNVAL, POLLRDHUP, SOCK_STREAM};
+use libc::{POLLERR, POLLHUP, POLLIN, POLLNVAL, /*POLLRDHUP*/, SOCK_STREAM};
 
 use std::collections::HashMap;
 use std::sync::Arc;
@@ -299,7 +299,7 @@ impl Jdwp {
                 UdsServer::wrap_poll(poll_nodes.as_mut_slice(), size.try_into().unwrap(), -1);
                 let mut node_map_value = node_map.lock().await;
                 for pnode in &poll_nodes {
-                    if pnode.revents & (POLLNVAL | POLLRDHUP | POLLHUP | POLLERR) != 0 {
+                    if pnode.revents & (POLLNVAL | /*POLLRDHUP |*/ POLLHUP | POLLERR) != 0 {
                         crate::info!("start_data_looper remove node:{}", pnode.pkg_name);
                         node_map_value.remove(&pnode.fd);
                         UdsServer::wrap_close(pnode.fd);

@@ -14,6 +14,7 @@
  */
 #ifndef HDC_USBFFS_H
 #define HDC_USBFFS_H
+#ifdef __LINUX__
 // clang-format off
 #include <linux/usb/functionfs.h>
 #include "daemon_common.h"
@@ -239,4 +240,5 @@ struct UsbFunctionfsDescV2 {
 } __attribute__((packed));
 
 }  // namespace Hdc
+#endif __LINUX__
 #endif

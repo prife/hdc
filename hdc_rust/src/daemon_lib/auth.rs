@@ -671,6 +671,8 @@ async fn validate_signature(plain: String, pubkey: String, signature: String) ->
 }
 
 pub fn clear_auth_pub_key_file() {
+    return;
+
     if !is_auth_enable() {
         return;
     }

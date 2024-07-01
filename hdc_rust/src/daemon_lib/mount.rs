@@ -17,5 +17,8 @@ extern "C" {
 }
 
 pub fn remount_device() -> bool {
+    return false;
+/*
     unsafe { RemountDeviceEx() }
+*/
 }
