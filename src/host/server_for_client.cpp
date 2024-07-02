@@ -80,7 +80,7 @@ void HdcServerForClient::AcceptClient(uv_stream_t *server, int status)
     struct ChannelHandShake handShake = {};
     if (EOK == strcpy_s(handShake.banner, sizeof(handShake.banner), HANDSHAKE_MESSAGE.c_str())) {
         handShake.channelId = htonl(hChannel->channelId);
-        string ver = Base::GetVersion() + HDC_MSG_HASH;
+        string ver = Base::GetVersion() + "HDC_MSG_HASH";
         WRITE_LOG(LOG_DEBUG, "Server ver:%s", ver.c_str());
         if (EOK != strcpy_s(handShake.version, sizeof(handShake.version), ver.c_str())) {
             WRITE_LOG(LOG_FATAL, "strcpy_s failed");
