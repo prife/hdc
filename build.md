@@ -25,7 +25,7 @@ brew install libuv libusb
 安装依赖库
 
 ```
-sudo apt install libudev-dev liblz4-dev libuv1-dev libusb-1.0-0-dev
+sudo apt install libudev-dev liblz4-dev libuv1-dev libusb-1.0-0-dev libssl-dev build-essential cmake
 ```
 
 ## 编译
